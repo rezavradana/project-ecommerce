@@ -94,18 +94,23 @@ main {
 }
 
 .jumbotron {
-    margin-block: 30px 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+}
+
+.category, .products, .jumbotron {
+   margin: 50px auto;
+   padding: 20px;
+   display: flex;
+   flex-flow: column nowrap;
+   gap: 1.5rem;
+   max-width: 1000px;
 }
 
 .slideshow {
     display: flex;
     flex-flow: row nowrap;
     height: 300px;
-    width: 70%;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -116,14 +121,6 @@ main {
     object-fit: cover;
     background-color: gray;
     border-radius: 20px;
-}
-
-.category, .products {
-    margin: 100px auto;
-   display: flex;
-   flex-flow: column nowrap;
-   gap: 1.5rem;
-   max-width: 85%;
 }
 
 .category .title-category, .title-products {
