@@ -98,11 +98,7 @@ main {
     margin: 0 auto;
 }
 
-.jumbotron {
-    align-items: center;
-}
-
-.category, .products, .jumbotron {
+.category, .products, .swiper {
    margin: 50px auto;
    padding: 20px;
    display: flex;
@@ -111,21 +107,22 @@ main {
    max-width: 1000px;
 }
 
-.slideshow {
-    display: flex;
-    flex-flow: row nowrap;
-    height: 300px;
+.swiper-wrapper .swiper-slide {
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 300px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-.slideshow img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: gray;
-    border-radius: 20px;
+.swiper-slide.red {
+    background-color: red;
+}
+.swiper-slide.blue {
+    background-color: blue;
+}
+.swiper-slide.green {
+    background-color: green;
 }
 
 .category .title-category, .title-products {
@@ -703,6 +700,7 @@ footer .first-footer {
     border-radius: 10px;
     color: white;
 }
+
 
 
 
