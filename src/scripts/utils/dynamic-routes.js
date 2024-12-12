@@ -11,14 +11,6 @@ function addRoute(url) {
         return '/product/:id';
     }
 
-    if (urlObj.resource === 'wishlist' && urlObj.id) {
-        return '/wishlist/:id';
-    }
-
-    if (urlObj.resource === 'cart' && urlObj.id) {
-        return '/cart/:id';
-    }
-
     return url;
 }
 

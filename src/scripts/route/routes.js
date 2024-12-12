@@ -13,8 +13,8 @@ const routes = {
   '/login': Login,
   '/category/:type': Category,
   '/product/:id': Product,
-  '/wishlist/:id': Wishlist,
-  '/cart/:id': Cart,
+  '/wishlist': Wishlist,
+  '/cart': Cart,
 };
 
 export default routes;

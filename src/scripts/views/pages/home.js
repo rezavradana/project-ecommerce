@@ -1,7 +1,6 @@
-// import Swiper bundle with all modules installed
 import Swiper from 'swiper/bundle';
-// import styles bundle
 import 'swiper/css/bundle';
+import { getProducts } from '../../data/main';
 
 const Home = {
     async render() {
@@ -71,66 +70,6 @@ const Home = {
             </div>
 
             <div class="list-products">
-                <div class="product">
-                <a href="/#/product/1"> 
-                    <div class="image-product">
-                        <img src="" alt="">
-                    </div>
-                    <div class="description-product">
-                        <span>Judul Product</span>
-                        <span>Rp.15000</span>
-                        <div class="rating">
-                            <i class="fa fa-star"> 5.0 | </i>
-                            <span>10 terjual</span>
-                        </div>
-                    </div>
-                </a>
-                </div>
-                <div class="product">
-                <a href="/#/product/1"> 
-                    <div class="image-product">
-                        <img src="" alt="">
-                    </div>
-                    <div class="description-product">
-                        <span>Judul Product</span>
-                        <span>Rp.15000</span>
-                        <div class="rating">
-                            <i class="fa fa-star"> 5.0 | </i>
-                            <span>10 terjual</span>
-                        </div>
-                    </div>
-                </a>
-                </div>
-                <div class="product">
-                <a href="/#/product/1"> 
-                    <div class="image-product">
-                        <img src="" alt="">
-                    </div>
-                    <div class="description-product">
-                        <span>Judul Product</span>
-                        <span>Rp.15000</span>
-                        <div class="rating">
-                            <i class="fa fa-star"> 5.0 | </i>
-                            <span>10 terjual</span>
-                        </div>
-                    </div>
-                </a>
-                </div>
-                <div class="product">
-                <a href="/#/product/1"> 
-                    <div class="image-product">
-                        <img src="" alt="">
-                    </div>
-                    <div class="description-product">
-                        <span>Judul Product</span>
-                        <span>Rp.15000</span>
-                        <div class="rating">
-                            <i class="fa fa-star"> 5.0 | </i>
-                            <span>10 terjual</span>
-                        </div>
-                    </div>
-                </a>
-                </div>
             </div>
         </div>
         `
@@ -161,7 +100,47 @@ const Home = {
             scrollbar: {
               el: '.swiper-scrollbar',
             },
-          });
+        });
+
+        const responseJson = await getProducts();
+
+        if (responseJson.status === 'success' && responseJson.data && responseJson.data.products) {
+            const products = responseJson.data.products;  // Ambil array produk dari response
+    
+            // Ambil elemen container untuk menampilkan produk
+            const listProductsContainer = document.querySelector('.list-products');
+    
+            // Hapus konten lama sebelum menambahkan produk baru
+            listProductsContainer.innerHTML = '';
+    
+            // Looping untuk menambahkan produk satu per satu
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+    
+                // Menambahkan HTML untuk setiap produk
+                productElement.innerHTML = `
+                    <a href="/#/product/${product.id}"> 
+                        <div class="image-product">
+                            <img src="${product.image_url}" alt="${product.name}">
+                        </div>
+                        <div class="description-product">
+                            <span>${product.name}</span>
+                            <span>Rp.${product.price}</span>
+                            <div class="rating">
+                                <span>Tersisa: ${product.stock} Stok</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+    
+                // Tambahkan elemen produk ke dalam container
+                listProductsContainer.appendChild(productElement);
+            });
+        } else {
+            console.error('Gagal memuat produk');
+        }
+
     }
 }
 
