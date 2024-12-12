@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding: var(--scroll-padding, 5rem);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    display: inline;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    margin: 0 auto;
+}
+
+footer {
+    width: 100%;
+    padding: 30px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+
+footer .first-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1rem;
+    justify-content: space-evenly;
+}
+
+.first-footer .exclusive,
+.support,
+.account,
+.quick-link {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+.first-footer .account a,
+.quick-link a {
+    text-decoration: none;
+    color: white;
+}
+
+.second-footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+// .category,
+// .products,
+// .swiper {
+//     margin: 50px auto;
+//     padding: 20px;
+//     display: flex;
+//     flex-flow: column nowrap;
+//     gap: 1.5rem;
+//     max-width: 1000px;
+// }
+
+// * Content Container
+@mixin content-container {
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+    max-width: 1000px;
+}
+
+@mixin title-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+
+@mixin header-container {
+    padding: 5px;
+    border-radius: 2px;
+    background-color: red;
+    color: red;
+    margin-right: 5px;
+}
+
+// * Import Partial Part SCSS
+@import "navbar";
+@import "account";
+@import "swiper";
+@import "category";
+@import "explore";
+@import "details";

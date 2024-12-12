@@ -1,0 +1,78 @@
+nav {
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: space-between;
+     padding: 20px 50px;
+     border: 2px solid grey;
+     row-gap: 1rem;
+}
+
+.title-navbar,
+.menu-navbar,
+.search-navbar {
+     display: flex;
+     align-items: center;
+}
+
+.title-navbar a {
+     text-decoration: none;
+     color: black;
+}
+
+.ul-list {
+     display: flex;
+     flex-flow: row nowrap;
+     gap: 3rem;
+     align-items: center;
+}
+
+.ul-list li {
+     list-style: none;
+     align-content: center;
+}
+
+.ul-list li a {
+     text-decoration: none;
+     color: black;
+}
+
+.search-navbar {
+     border: 1px solid grey;
+     padding: 5px;
+     gap: 5px;
+     border-radius: 10px;
+}
+
+.search-navbar form input {
+     width: 250px;
+     height: 30px;
+     border: none;
+}
+
+.search-navbar form input:focus {
+     outline: none;
+     border: none;
+}
+
+.search-navbar .search-button {
+     cursor: pointer;
+}
+
+.wish-cart-navbar {
+     display: flex;
+     flex-flow: row nowrap;
+     align-items: center;
+     text-align: center;
+     justify-content: center;
+     gap: 1rem;
+}
+
+.wish-cart-navbar a {
+     text-decoration: none;
+     color: black;
+}
+
+.wish-cart-navbar i {
+     font-size: 20px;
+     cursor: pointer;
+}

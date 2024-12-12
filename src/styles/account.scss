@@ -1,0 +1,62 @@
+/* LOGIN & REGISTER*/
+.login,
+.register {
+     width: 100%;
+     max-width: 600px;
+     margin: 50px auto;
+}
+
+.login .container,
+.register .container {
+     display: flex;
+     flex-flow: column nowrap;
+     gap: 1rem;
+     padding: 30px;
+     margin: 130px 80px;
+     background-color: #FFFFFF;
+     align-items: center;
+     border-radius: 15px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login .container form,
+.register .container form {
+     display: flex;
+     flex-flow: column nowrap;
+     gap: 1.5rem;
+     width: 100%;
+}
+
+.login .container form .form-input,
+.register .container form .form-input {
+     display: flex;
+     flex-flow: column nowrap;
+     gap: 5px;
+}
+
+.login .container form .form-input input[type="email"],
+.login .container form .form-input input[type="password"],
+.register .container form .form-input input[type="text"],
+.register .container form .form-input input[type="password"],
+.register .container form .form-input input[type="email"] {
+     height: 35px;
+     border-radius: 10px;
+     border: 1px solid grey;
+     padding: 10px;
+     font-family: "Poppins", sans-serif;
+}
+
+.login .container form .button-login button,
+.register .container form .button-register button {
+     width: 100%;
+     min-height: 44px;
+     min-width: 44px;
+     border: none;
+     border-radius: 10px;
+     background-color: red;
+     color: #FFFFFF;
+     font-family: 'Poppins', sans-serif;
+     font-weight: 500;
+     cursor: pointer;
+     margin-bottom: 10px;
+}

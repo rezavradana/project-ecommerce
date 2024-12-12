@@ -1,0 +1,23 @@
+.swiper {
+     @include content-container;
+
+     .swiper-wrapper .swiper-slide {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 10px;
+     }
+     
+     .swiper-slide.red {
+          background-color: red;
+     }
+     
+     .swiper-slide.blue {
+          background-color: blue;
+     }
+     
+     .swiper-slide.green {
+          background-color: green;
+     }
+}
