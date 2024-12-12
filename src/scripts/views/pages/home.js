@@ -9,9 +9,9 @@ const Home = {
         mainContent.innerHTML = `
         <div class="swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide red">Slide 1</div>
-                <div class="swiper-slide blue">Slide 2</div>
-                <div class="swiper-slide green">Slide 3</div>
+                <div class="swiper-slide first"></div>
+                <div class="swiper-slide second"></div>
+                <div class="swiper-slide third"></div>
             </div>
             <div class="swiper-pagination"></div>
 
