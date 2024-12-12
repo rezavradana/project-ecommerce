@@ -7,8 +7,8 @@ function addRoute(url) {
         return '/category/:type';
     }
 
-    if (urlObj.resource === 'product' && urlObj.id) {
-        return '/product/:id';
+    if (urlObj.resource === 'product' && urlObj.verb) {
+        return '/product/:verb';
     }
 
     return url;

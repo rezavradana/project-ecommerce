@@ -9,9 +9,9 @@ const Home = {
         mainContent.innerHTML = `
         <div class="swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide red">Slide 1</div>
-                <div class="swiper-slide blue">Slide 2</div>
-                <div class="swiper-slide green">Slide 3</div>
+                <div class="swiper-slide"><img src="./images/zavieracarousel.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./images/zavieracarousel2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./images/zavieracarousel3.jpg" alt=""></div>
             </div>
             <div class="swiper-pagination"></div>
 
@@ -122,7 +122,7 @@ const Home = {
                 productElement.innerHTML = `
                     <a href="/#/product/${product.id}"> 
                         <div class="image-product">
-                            <img src="${product.image_url}" alt="${product.name}">
+                            <img src="./images/${product.image_url}" alt="${product.name}">
                         </div>
                         <div class="description-product">
                             <span>${product.name}</span>

@@ -9,15 +9,9 @@
           border-radius: 10px;
      }
      
-     .swiper-slide.red {
-          background-color: red;
-     }
-     
-     .swiper-slide.blue {
-          background-color: blue;
-     }
-     
-     .swiper-slide.green {
-          background-color: green;
+     .swiper-slide img {
+          object-fit: fill;
+          width: 100%;
+          height: 100%; 
      }
 }

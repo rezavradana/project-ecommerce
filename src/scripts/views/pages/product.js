@@ -1,3 +1,9 @@
+import { getProductById } from "../../data/main";
+import UrlParser from "../../route/url-parser";
+import { buttonAddCart } from "../../utils/cart-button";
+import setupQuantityInput from "../../utils/input-quantity";
+import { buttonAddWishlist, buttonDeleteWishlist } from "../../utils/wishlist-button";
+
 const Product = {
     async render() {
         const mainContent = document.querySelector('#maincontent');
@@ -6,7 +12,7 @@ const Product = {
         <div class="product-detail">
         <div class="description-product">
             <div class="image-product">
-                <img src="" alt="">
+                <img src="/images/ALVARA.jpg" alt="">
             </div>
             <div class="detail-product">
                 <h1 class="product-title">Product Title</h1>
@@ -15,8 +21,6 @@ const Product = {
                     ⭐⭐⭐⭐⭐ <span>(628 rating)</span>
                 </div>
                 <p class="description">
-                    Pembersih wajah dengan busa bouncy dengan soft-melting cellulose beads yang sepenuhnya menghilangkan sisa riasan dan kotoran dari dalam pori-pori.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit architecto consequuntur dolore eius quis illo quidem laboriosam, nihil cum voluptate! Labore repellat necessitatibus aspernatur natus quidem cupiditate eveniet quisquam ex earum? Pariatur commodi adipisci sunt nihil ipsum possimus totam odit. Porro est architecto voluptatem odit ipsum quo suscipit rerum ad itaque temporibus, voluptas aspernatur, dolorum tenetur beatae? Nesciunt vero repellendus eligendi. Ducimus adipisci vero illo placeat itaque repellat amet esse libero eos, ut perferendis, provident excepturi eum quas vitae distinctio iure aliquid laudantium quo obcaecati exercitationem reiciendis nihil, eligendi ex. Recusandae sint id doloremque neque sunt itaque officia excepturi qui.
                 </p>
             </div>
             <div class="transaction-product">
@@ -26,10 +30,10 @@ const Product = {
                 </div>
                 <div class="quantity">
                     <button class="decrease-quantity">−</button>
-                    <input type="number" value="1" min="1" disabled>
+                    <input type="number" value="1" min="1" id="quantity-input" disabled>
                     <button class="increase-quantity">+</button>
                 </div>
-                <div class="price">Rp29.600</div>
+                <div class="amount-price">Rp29.600</div>
                 <div class="buttons">
                     <button class="buy-now">Beli Langsung</button>
                     <button class="add-cart">+ Keranjang</button>
@@ -52,7 +56,46 @@ const Product = {
     },
 
     async afterRender() {
+        // RENDER DESKRIPSI BARANG
+        const { verb: productId } = UrlParser.parseActiveUrlWithoutCombiner();
+        const responseJson = await getProductById(productId)
+        const { name, description, price, stock, image_url } = responseJson.data.product;
 
+        document.querySelector('.product-title').textContent = name;
+        document.querySelector('.price').textContent = `Rp${Number(price).toLocaleString()}`;
+        document.querySelector('.amount-price').textContent = `Rp${Number(price).toLocaleString()}`;
+        document.querySelector('.stock strong').textContent = stock;
+        document.querySelector('.description').innerHTML = description;
+        document.querySelector('.image-product img').src = `./images/${image_url}`;
+        document.querySelector('.image-product img').alt = name;
+
+        // RAPIHIN TEKS DESKRIPSI
+        let descriptionElement = document.querySelector('.description');
+        let descriptionText = descriptionElement.innerHTML;
+        let updatedDescription = descriptionText.replace(/\/br/g, '<br>');
+        descriptionElement.innerHTML = updatedDescription;
+
+
+        // FUNGSI INPUT JUMLAH BARANG
+        let quantityInput = document.getElementById('quantity-input');
+        let decreaseButton = document.querySelector('.decrease-quantity');
+        let increaseButton = document.querySelector('.increase-quantity');
+        const amountPrice = document.querySelector('.amount-price');
+
+        setupQuantityInput({ quantityInput, decreaseButton, increaseButton, stock, amountPrice, price });
+
+
+        // CART PRODUK
+        let cartButton = document.querySelector('.add-cart');
+        const quantity = parseInt(localStorage.getItem('quantity'));
+        cartButton.addEventListener('click', async () => {
+            const responseJson = await buttonAddCart(productId, quantity);
+            if (responseJson.status === 'success') {
+                alert('Produck berhasil ditambahkan');
+            } else {
+                alert('Terdapat kesalahan');
+            }
+        });
     }
 }
 

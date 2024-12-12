@@ -10,7 +10,7 @@
 .product-detail .image-product {
      flex: 1;
      width: 100%;
-     height: 400px;
+     height: fit-content;
      background-color: grey;
      position: sticky;
      top: 20px;
@@ -18,7 +18,7 @@
 
 .product-detail .image-product img {
      width: 100%;
-     height: auto;
+     object-fit: fill;
      border: 1px solid #ddd;
      border-radius: 5px;
 }
@@ -33,7 +33,7 @@
      font-weight: bold;
 }
 
-.product-detail .price {
+.product-detail .price, .amount-price {
      font-size: 20px;
      color: #e63946;
      margin: 10px 0;

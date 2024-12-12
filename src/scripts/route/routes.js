@@ -12,7 +12,7 @@ const routes = {
   '/register': Register,
   '/login': Login,
   '/category/:type': Category,
-  '/product/:id': Product,
+  '/product/:verb': Product,
   '/wishlist': Wishlist,
   '/cart': Cart,
 };

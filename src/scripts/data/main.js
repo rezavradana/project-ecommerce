@@ -34,6 +34,23 @@ const tryLogin = async (payload) => {
     }
 }
 
+const updateToken = async (payload) => {
+    try {
+        const options = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        };
+        const response = await fetch(`${BASE_URL}/authentications`, options);
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const getProducts = async () => {
     try {
         const options = {
@@ -226,5 +243,5 @@ export {
     getProductById, addWishlist, deleteWishlist, 
     addCart, getCart, updateQuantityItemInCart, 
     deleteCart, getAllCategory, getCategoryById, 
-    getProductFromCategory 
+    getProductFromCategory, updateToken
 };

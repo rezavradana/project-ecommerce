@@ -49,7 +49,7 @@ const Login = {
                 links.forEach(link => {
                     if (link.textContent.trim() === "Sign Up") {
                         link.textContent = "Logout";
-                        link.href = "#/logout";
+                        link.href = "#";
                     }
                 });
             } else {
