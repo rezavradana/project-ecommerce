@@ -9,10 +9,17 @@ html {
     scroll-padding: var(--scroll-padding, 5rem);
 }
 
+$montserrat: "Montserrat", sans-serif;
+$charm: "Charm", cursive;
+
+$white: #ffffff;
+$black: #171717;
+$red: #db0000;
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: $white;
     font-family: "Poppins", sans-serif;
 }
 
@@ -29,8 +36,8 @@ main {
 footer {
     width: 100%;
     padding: 30px;
-    background-color: black;
-    color: white;
+    background-color: $black;
+    color: $white;
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
@@ -55,25 +62,13 @@ footer .first-footer {
 .first-footer .account a,
 .quick-link a {
     text-decoration: none;
-    color: white;
+    color: $white;
 }
 
 .second-footer {
     display: flex;
     justify-content: center;
 }
-
-
-// .category,
-// .products,
-// .swiper {
-//     margin: 50px auto;
-//     padding: 20px;
-//     display: flex;
-//     flex-flow: column nowrap;
-//     gap: 1.5rem;
-//     max-width: 1000px;
-// }
 
 // * Content Container
 @mixin content-container {
@@ -94,8 +89,8 @@ footer .first-footer {
 @mixin header-container {
     padding: 5px;
     border-radius: 2px;
-    background-color: red;
-    color: red;
+    background-color: $red;
+    color: $red;
     margin-right: 5px;
 }
 
