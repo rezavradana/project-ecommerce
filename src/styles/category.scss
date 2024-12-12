@@ -1,0 +1,44 @@
+.category {
+     @include content-container;
+
+     .title-category {
+          @include title-container;
+     }
+     
+     .title-category .header i {
+          @include header-container;
+     }
+     
+     .title-category .header span {
+          color: red;
+     }
+     
+     .list-category ul {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: space-evenly;
+          row-gap: 1rem;
+     }
+     
+     .list-category ul li {
+          list-style: none;
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
+          gap: 1rem;
+          border: 1px solid black;
+          padding: 30px;
+          border-radius: 5px;
+     }
+     
+     .list-category ul li i {
+          font-size: 30px;
+     }
+     
+     .list-category ul li a {
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+     }
+}
