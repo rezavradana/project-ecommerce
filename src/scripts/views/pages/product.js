@@ -2,7 +2,7 @@ import { getProductById } from "../../data/main";
 import UrlParser from "../../route/url-parser";
 import { buttonAddCart } from "../../utils/cart-button";
 import setupQuantityInput from "../../utils/input-quantity";
-import { buttonAddWishlist, buttonDeleteWishlist } from "../../utils/wishlist-button";
+import LikeButtonInitiator from "../../utils/like-button-initiator";
 
 const Product = {
     async render() {
@@ -10,37 +10,36 @@ const Product = {
 
         mainContent.innerHTML = `
         <div class="product-detail">
-        <div class="description-product">
-            <div class="image-product">
-                <img src="/images/ALVARA.jpg" alt="">
+            <div class="description-product">
+                <div class="image-product">
+                    <img src="" alt="">
+                </div>
+                <div class="detail-product">
+                    <h1 class="product-title">Product Title</h1>
+                    <p class="price">Rp999999</p>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐ <span>(628 rating)</span>
+                    </div>
+                    <p class="description"></p>
+                </div>
+                <div class="transaction-product">
+                    <h1>Atur jumlah dan catatan</h1>
+                    <div class="stock">
+                        Stok Total: <strong>13</strong>
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease-quantity">−</button>
+                        <input type="number" value="1" min="1" id="quantity-input" disabled>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <div class="amount-price">Rp29.600</div>
+                    <div class="buttons">
+                        <button class="buy-now">Beli Langsung</button>
+                        <button class="add-cart">+ Keranjang</button>                        
+                        <button class="add-wishlist"><i class="fa fa-heart-o"></i></button>                        
+                    </div>
+                </div>
             </div>
-            <div class="detail-product">
-                <h1 class="product-title">Product Title</h1>
-                <p class="price">Rp999999</p>
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐ <span>(628 rating)</span>
-                </div>
-                <p class="description">
-                </p>
-            </div>
-            <div class="transaction-product">
-                <h1>Atur jumlah dan catatan</h1>
-                <div class="stock">
-                    Stok Total: <strong>13</strong>
-                </div>
-                <div class="quantity">
-                    <button class="decrease-quantity">−</button>
-                    <input type="number" value="1" min="1" id="quantity-input" disabled>
-                    <button class="increase-quantity">+</button>
-                </div>
-                <div class="amount-price">Rp29.600</div>
-                <div class="buttons">
-                    <button class="buy-now">Beli Langsung</button>
-                    <button class="add-cart">+ Keranjang</button>
-                    <button class="add-wishlist">&#9825;</button>
-                </div>
-            </div>
-        </div>
         </div>
     
         <div class="reviews">
@@ -69,6 +68,7 @@ const Product = {
         document.querySelector('.image-product img').src = `./images/${image_url}`;
         document.querySelector('.image-product img').alt = name;
 
+
         // RAPIHIN TEKS DESKRIPSI
         let descriptionElement = document.querySelector('.description');
         let descriptionText = descriptionElement.innerHTML;
@@ -96,6 +96,13 @@ const Product = {
                 alert('Terdapat kesalahan');
             }
         });
+
+
+        // WISHLIST PRODUK
+        let wishlistButton = document.querySelector('.add-wishlist');
+        const refreshToken = localStorage.getItem('refreshToken');
+        LikeButtonInitiator.init({ wishlistButton, productId, refreshToken });
+
     }
 }
 

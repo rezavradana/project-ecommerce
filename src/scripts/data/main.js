@@ -101,6 +101,40 @@ const addWishlist = async (payload, accessToken) => {
     }
 }
 
+const getWishlistById = async (accessToken) => {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${accessToken}`
+            },
+        };
+        const response = await fetch(`${BASE_URL}/wishlist`, options);
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const checkWishlistById = async (productId, accessToken) => {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${accessToken}`
+            },
+        };
+        const response = await fetch(`${BASE_URL}/check-wishlist/${productId}`, options);
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const deleteWishlist = async (payload, accessToken) => {
     try {
         const options = {
@@ -240,7 +274,8 @@ const getProductFromCategory = async (categoryId) => {
 
 export { 
     addRegistration, tryLogin, getProducts, 
-    getProductById, addWishlist, deleteWishlist, 
+    getProductById, addWishlist, getWishlistById, 
+    deleteWishlist, checkWishlistById,
     addCart, getCart, updateQuantityItemInCart, 
     deleteCart, getAllCategory, getCategoryById, 
     getProductFromCategory, updateToken

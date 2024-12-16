@@ -129,7 +129,12 @@
 
 .transaction-product .buttons .add-wishlist {
      border: none;
-     background-color: white;
-     font-size: 30px;
+     background-color: transparent;
+     font-size: 20px;
      cursor: pointer;
+     margin-left: 10px;
+}
+
+.transaction-product .buttons .add-wishlist .like{
+     color: red;
 }
