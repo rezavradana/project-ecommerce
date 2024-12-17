@@ -3,14 +3,20 @@ function setupQuantityInput({ quantityInput, decreaseButton, increaseButton, sto
     // Set nilai max untuk input number
     quantityInput.max = stock;
 
+    const updatePrice = () => {
+        const totalPrice = price * quantityInput.value;
+        amountPrice.innerText = `Rp${totalPrice.toLocaleString()}`;
+
+        amountPrice.dataset.unitPrice = price;
+    };
+
     // Fungsi untuk mengurangi jumlah
     decreaseButton.addEventListener('click', function() {
         if (quantityInput.value > 1) {
             quantityInput.value--;
             localStorage.setItem('quantity', quantityInput.value)
 
-            const totalPrice = price * quantityInput.value;
-            amountPrice.innerText = `Rp${totalPrice.toLocaleString()}`;
+            updatePrice();
         }
     });
     
@@ -19,10 +25,12 @@ function setupQuantityInput({ quantityInput, decreaseButton, increaseButton, sto
         if (quantityInput.value < stock) {
             quantityInput.value++;
             localStorage.setItem('quantity', quantityInput.value)
-            const totalPrice = price * quantityInput.value;
-            amountPrice.innerText = `Rp${totalPrice.toLocaleString()}`;
+            
+            updatePrice();
         }
     });
+
+    updatePrice();
 }
 
 export default setupQuantityInput;
