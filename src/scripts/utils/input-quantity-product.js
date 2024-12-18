@@ -2,7 +2,8 @@
 function setupQuantityInput({ quantityInput, decreaseButton, increaseButton, stock, amountPrice, price }) {
     // Set nilai max untuk input number
     quantityInput.max = stock;
-
+    localStorage.setItem('quantity', 1);
+    
     const updatePrice = () => {
         const totalPrice = price * quantityInput.value;
         amountPrice.innerText = `Rp${totalPrice.toLocaleString()}`;
