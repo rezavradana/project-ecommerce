@@ -1,4 +1,7 @@
 import UrlParser from '../../route/url-parser';
+import { getProducts } from '../../data/main';
+import { filterProductsByCategory } from '../../utils/category-filter';
+
 const Category = {
     async render() {
         const { verb } = UrlParser.parseActiveUrlWithoutCombiner();
@@ -84,7 +87,39 @@ const Category = {
     },
 
     async afterRender() {
+        const { verb } = UrlParser.parseActiveUrlWithoutCombiner();
+        const responseJson = await getProducts();
+            if (responseJson.status === 'success' && responseJson.data && responseJson.data.products) {
+                const products = responseJson.data.products;
 
+                // Memfilter produk berdasarkan kategori
+                const filteredProducts = filterProductsByCategory(products, verb);
+
+                const listProductsContainer = document.querySelector('.list-products');
+                    listProductsContainer.innerHTML = '';
+                    filteredProducts.forEach(product => {
+                        const productElement = document.createElement('div');
+                            productElement.classList.add('product');
+
+                            productElement.innerHTML = `
+                                <a href="/#/product/${product.id}"> 
+                                    <div class="image-product">
+                                        <img src="./images/${product.image_url}" alt="${product.name}">
+                                    </div>
+                                    <div class="description-product">
+                                        <span>${product.name}</span>
+                                        <span>Rp.${product.price}</span>
+                                        <div class="rating">
+                                            <span>Tersisa: ${product.stock} Stok</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                        listProductsContainer.appendChild(productElement);
+                    });
+        } else {
+            console.error('Terjadi kesalahan, gagal dalam memuat produk');
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 import { getProductById } from "../../data/main";
 import UrlParser from "../../route/url-parser";
 import { buttonAddCart } from "../../utils/cart-button";
-import setupQuantityInput from "../../utils/input-quantity";
+import setupQuantityInput from "../../utils/input-quantity-product";
 import LikeButtonInitiator from "../../utils/like-button-initiator";
 
 const Product = {
@@ -84,11 +84,10 @@ const Product = {
 
         setupQuantityInput({ quantityInput, decreaseButton, increaseButton, stock, amountPrice, price });
 
-
         // CART PRODUK
         let cartButton = document.querySelector('.add-cart');
-        const quantity = parseInt(localStorage.getItem('quantity'));
         cartButton.addEventListener('click', async () => {
+            const quantity = parseInt(localStorage.getItem('quantity'));
             const responseJson = await buttonAddCart(productId, quantity);
             if (responseJson.status === 'success') {
                 alert('Produck berhasil ditambahkan');

@@ -1,4 +1,6 @@
-import { getCart, updateToken } from "../../data/main";
+import { getCart, getProductById, updateQuantityItemInCart, updateToken } from "../../data/main";
+import setupQuantityInput from "../../utils/input-quantity-cart";
+import { buttonDeleteCart } from "../../utils/cart-button";
 
 const Cart = {
     async render() {
@@ -13,7 +15,7 @@ const Cart = {
                     <p class="title">Ringkasan Belanja</p>
                     <div class="price">
                         <p>Total</p>
-                        <p class="total-price">Rp28.500</p>
+                        <p class="total-price">Rp 0</p>
                     </div>
                 </div>
                 <div class="button-transactions">
@@ -35,9 +37,27 @@ const Cart = {
         const responseJson = await getCart(accessToken);
         const cartData = responseJson.data.carts;
 
-        cartData.forEach(item => {
+        function updateTotalPrice() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            let totalPrice = 0;
+        
+            cartItems.forEach(item => {
+                const currentPrice = item.querySelector('.cart-current-price');
+                const price = parseFloat(currentPrice.innerText.replace('Rp', '').replaceAll('.', ''));
+                totalPrice += price;
+            });
+        
+            document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
+        }
+
+        for (const item of cartData) {
+            // Mengambil detail produk untuk mendapatkan stock
+            const productDetails = await getProductById(item.product_id);
+            // const { name, description, price, stock, image_url } = responseJson.data.product;
+            const { stock } = productDetails.data.product;
+            
             const cartItemHTML = `
-            <div class="cart-item">
+            <div class="cart-item" data-product-id="${item.product_id}">
                 <div class="cart-image">
                 <span class="cart-discount">23%</span>
                 <img src="./images/${item.image_url}">
@@ -49,7 +69,7 @@ const Cart = {
                 </div>
                 </div>
                 <div class="cart-actions">
-                <button class="cart-action-btn"><i class="fa fa-trash"></i></button>
+                <button class="delete-cart cart-action-btn" id="${item.product_id}"><i class="fa fa-trash"></i></button>
                 <div class="cart-quantity-control">
                     <button class="cart-quantity-btn decrease-quantity">-</button>
                     <input type="number" min="1" class="cart-quantity-input" value="${item.quantity}" disabled>
@@ -59,15 +79,37 @@ const Cart = {
             </div>
             `;
             cartProductsElement.insertAdjacentHTML('beforeend', cartItemHTML);
-        });
+ 
+            // FUNGSI INPUT JUMLAH BARANG
+            const cartItemElement = cartProductsElement.querySelector(`.cart-item[data-product-id="${item.product_id}"]`);
+            const cartQuantityInput = cartItemElement.querySelector('.cart-quantity-input');
+            const decreaseButton = cartItemElement.querySelector('.decrease-quantity');
+            const increaseButton = cartItemElement.querySelector('.increase-quantity');
+            const amountPrice = cartItemElement.querySelector('.cart-current-price');
 
-        // Update total price
-        const totalPrice = cartData.reduce((acc, item) => acc + item.product_price * item.quantity, 0);
-        document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
+            setupQuantityInput({ 
+                quantityInput:cartQuantityInput, 
+                decreaseButton, 
+                increaseButton,
+                stock, 
+                amountPrice, 
+                price: item.product_price,
+                updateTotalPrice
+            });
 
-        
+            const deleteCartButton = cartItemElement.querySelector('.delete-cart');
+                deleteCartButton.addEventListener('click', async (event) => {
+                    event.preventDefault();
+                    await buttonDeleteCart(item.product_id);
+                    window.location.reload();
+            });
 
-    }
-}
+            const totalPrice = cartData.reduce((acc, item) => acc + item.product_price * item.quantity, 0);
+            document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
+        };
+
+    },
+};
+
 
 export default Cart;

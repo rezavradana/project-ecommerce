@@ -4,7 +4,7 @@ async function buttonAddCart(productId, quantity) {
     const refreshToken = localStorage.getItem('refreshToken');
     const responseRefreshToken = await updateToken({ refreshToken });
     const { accessToken } = responseRefreshToken.data;
-    
+    console.log(quantity);
     const responseJson = await addCart({ productId, quantity }, accessToken);
     return responseJson;
 }
