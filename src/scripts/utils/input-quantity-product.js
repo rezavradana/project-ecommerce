@@ -9,6 +9,7 @@ function setupQuantityInput({ quantityInput, decreaseButton, increaseButton, sto
         amountPrice.innerText = `Rp${totalPrice.toLocaleString()}`;
 
         amountPrice.dataset.unitPrice = price;
+        localStorage.setItem('amountPriceProduct', totalPrice);
     };
 
     // Fungsi untuk mengurangi jumlah

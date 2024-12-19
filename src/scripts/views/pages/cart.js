@@ -1,6 +1,7 @@
-import { getCart, getProductById, updateQuantityItemInCart, updateToken } from "../../data/main";
+import { getCart, getUserById, processPayment, updateQuantityItemInCart, updateToken } from "../../data/main";
 import setupQuantityInput from "../../utils/input-quantity-cart";
 import { buttonDeleteCart } from "../../utils/cart-button";
+import { nanoid } from "nanoid";
 
 const Cart = {
     async render() {
@@ -46,16 +47,13 @@ const Cart = {
                 const price = parseFloat(currentPrice.innerText.replace('Rp', '').replaceAll('.', ''));
                 totalPrice += price;
             });
-        
+
+            
             document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
+            return totalPrice;
         }
 
-        for (const item of cartData) {
-            // Mengambil detail produk untuk mendapatkan stock
-            const productDetails = await getProductById(item.product_id);
-            // const { name, description, price, stock, image_url } = responseJson.data.product;
-            const { stock } = productDetails.data.product;
-            
+        for (const item of cartData) {         
             const cartItemHTML = `
             <div class="cart-item" data-product-id="${item.product_id}">
                 <div class="cart-image">
@@ -91,10 +89,12 @@ const Cart = {
                 quantityInput:cartQuantityInput, 
                 decreaseButton, 
                 increaseButton,
-                stock, 
+                stock: item.product_stock, 
                 amountPrice, 
                 price: item.product_price,
-                updateTotalPrice
+                updateTotalPrice,
+                refreshToken,
+                productId: item.product_id,
             });
 
             const deleteCartButton = cartItemElement.querySelector('.delete-cart');
@@ -105,9 +105,56 @@ const Cart = {
             });
 
             const totalPrice = cartData.reduce((acc, item) => acc + item.product_price * item.quantity, 0);
-            document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
+            document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;  
         };
 
+        const payButton = document.querySelector('.cart-transactions-btn');
+        payButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const orderId = `order-${nanoid(16)}`;
+
+            const refreshToken = localStorage.getItem('refreshToken');
+            const responseRefreshToken = await updateToken({ refreshToken });
+            const { accessToken } = responseRefreshToken.data;
+
+            const resultUser = await getUserById(accessToken);
+            const { user } = resultUser.data;
+
+            const responseJson = await getCart(accessToken);
+            const cartData = responseJson.data.carts;
+            
+            const itemsArray = cartData.map(item => ({
+                id: item.product_id,
+                price: item.product_price,
+                quantity: item.quantity,
+                name: item.product_name
+            }));
+
+            const amountPrice = updateTotalPrice();
+
+            const resultPayment = await processPayment({ orderId, amount: amountPrice, itemsArray, customer: user });
+            const { token } = resultPayment.data.resultPayment;
+
+            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay(token, {
+                onSuccess: function(result){
+                  /* You may add your own implementation here */
+                  alert("payment success!"); console.log(result);
+                },
+                onPending: function(result){
+                  /* You may add your own implementation here */
+                  alert("wating your payment!"); console.log(result);
+                },
+                onError: function(result){
+                  /* You may add your own implementation here */
+                  alert("payment failed!"); console.log(result);
+                },
+                onClose: function(){
+                  /* You may add your own implementation here */
+                  alert('you closed the popup without finishing the payment');
+                }
+            })
+        });
     },
 };
 

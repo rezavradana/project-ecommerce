@@ -83,6 +83,23 @@ const getProductById = async (productId) => {
     }
 }
 
+const getUserById = async (accessToken) => {
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${accessToken}`
+            },
+        };
+        const response = await fetch(`${BASE_URL}/users`, options);
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const addWishlist = async (payload, accessToken) => {
     try {
         const options = {
@@ -272,11 +289,28 @@ const getProductFromCategory = async (categoryId) => {
     }
 }
 
+const processPayment = async (payload) => {
+    try {
+        const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',           
+            },
+            body: JSON.stringify(payload)
+        };
+        const response = await fetch(`${BASE_URL}/payments`, options);
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export { 
     addRegistration, tryLogin, getProducts, 
     getProductById, addWishlist, getWishlistById, 
-    deleteWishlist, checkWishlistById,
+    getUserById, deleteWishlist, checkWishlistById,
     addCart, getCart, updateQuantityItemInCart, 
     deleteCart, getAllCategory, getCategoryById, 
-    getProductFromCategory, updateToken
+    getProductFromCategory, updateToken, processPayment
 };
