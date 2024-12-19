@@ -1,8 +1,23 @@
 .products {
      @include content-container;
-     
+
      .title-products {
           @include title-container;
+          span {
+               font-size: 0.9rem;
+          }
+          h3 {
+               font-size: 1.6rem;
+          }
+
+          @media screen and (min-width: 768px) {
+               span {
+                    font-size: 1.4rem;
+               }
+               h3 {
+                    font-size: 2rem;
+               }
+          }
      }
 
      .header i,
@@ -25,20 +40,20 @@
 
 		// * Mobile and Tablet
 		@media screen and (min-width: 375px) {
-			grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 			
 			// * Laptop
 			@media screen and (min-width: 1024px) {
-				grid-template-columns: repeat(4, minmax(300px, 1fr));
+				grid-template-columns: repeat(3, minmax(150px, 1fr));
 				gap: 2.5rem;
 
 				// * Wide
 				@media screen and (min-width: 1200px) {
-					grid-template-columns: repeat(4, minmax(350px, 1fr));
+					grid-template-columns: repeat(4, minmax(150px, 1fr));
 
 					// * Ultra Wide
 					@media screen and (min-width: 1600px) {
-						grid-template-columns: repeat(4, minmax(350px, 1fr));
+						grid-template-columns: repeat(4, minmax(300px, 1fr));
 					}
 				}
 			}
@@ -77,6 +92,10 @@
           gap: 1rem;
           margin: 10px;
      }
+
+     // @media screen and (min-width: ) {
+          
+     // }
 }
 
 

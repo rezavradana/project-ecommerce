@@ -28,31 +28,19 @@ const Home = {
                     <span>Categories</span>
                 </div>
                 <div class="title">
-                    <h1>Browse By Category</h1>
+                    <h3>Browse By Category</h3>
                 </div>
             </div>
 
             <div class="list-category">
                 <ul>
                     <li>
-                        <i class="fa fa-mobile"></i>
-                        <a href="#/category/phones">Phones</a>
+                        <img src="./icons/baju.png" alt="Baju">
+                        <a href="#/category/baju">Baju</a>
                     </li>
                     <li>
-                        <i class="fa fa-twitter"></i>
-                        <a href="#/category/computers">Computers</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-cutlery"></i>
-                        <a href="#/category/foodsdrinks">Foods & Drinks</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-user"></i>
-                        <a href="#/category/fashion">Fashion</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-instagram"></i>
-                        <a href="#/category/accessories">Accesories</a>
+                        <img src="./icons/kerudung.png" alt="Kerudung">
+                        <a href="#/category/kerudung">kerudung</a>
                     </li>
                 </ul>
             </div>
@@ -65,7 +53,7 @@ const Home = {
                     <span>Our Products</span>
                 </div>
                 <div class="title">
-                    <h1>Explore Our Products</h1>
+                    <h3>Explore Our Products</h3>
                 </div>
             </div>
 
