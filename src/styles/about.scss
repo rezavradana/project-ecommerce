@@ -1,0 +1,92 @@
+/* Floating Page Styling */
+.floating-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 9999;
+    overflow: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.floating-page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 50%;
+    max-height: 90%;
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Close Button Styling */
+.close-floating {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Scrollable Content */
+.scrollable-content {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* CTA Button Styling */
+.cta-button {
+    background-color: #f7b733;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #f7a200;
+}
+
+/* Team Section Styling */
+.team-grid {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.team-member p {
+    text-align: center;
+    font-weight: bold;
+}
+
+.story-section img{
+    width: 600px;
+    height: auto;
+    border-radius: 0%;
+}

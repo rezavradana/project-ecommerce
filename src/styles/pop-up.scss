@@ -1,0 +1,90 @@
+/* FAQ Container */
+.faq-container {
+    margin-top: 20px;
+}
+
+/* FAQ Item */
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* FAQ Question */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: peachpuff;
+    cursor: pointer;
+}
+
+.faq-question span {
+    font-weight: bold;
+}
+
+.faq-question button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* FAQ Answer */
+.faq-answer {
+    padding: 10px 15px;
+    background-color: cornsilk;
+    display: none;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+/* FAQ Modal General */
+.faq-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.faq-modal-content {
+    background: papayawhip;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.faq-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-modal-header h2 {
+    margin: 0;
+}
+
+.faq-modal-close {
+    cursor: pointer;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+}
+
+.blur {
+    filter: blur(5px);
+    transition: filter 0.3s;
+}
