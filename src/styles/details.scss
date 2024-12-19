@@ -1,84 +1,114 @@
 /* Product */
-.product-detail .description-product {
-     display: flex;
-     max-width: 1200px;
-     margin: 50px auto;
-     gap: 20px;
-     padding: 20px;
+.product-detail {
+     .description-product {
+          display: flex;
+          flex-flow: column nowrap;
+          margin: 30px;
+          padding: 10px;
+          gap: 20px;
+          font-family: $montserrat;
+
+          @media screen and (min-width: 1024px) {
+               max-width: 1200px;
+               margin: 50px auto;
+               padding: 20px;
+          }
+     }
+
+     .image-product {
+          flex: 1;
+          width: 100%;
+          height: fit-content;
+          background-color: $cream;
+
+          img {
+               width: 100%;
+               object-fit: fill;
+               border: 1px solid #ddd;
+               border-radius: 5px;
+          }
+     }
+
+     .detail-product {
+          flex: 2;
+     }
+
+     .product-title,
+     .transaction-product h2 {
+          font-size: 1.2rem;
+          font-weight: bold;
+
+          @media screen and (min-width: 768px) {
+               font-size: 1.4rem;
+          }
+
+          @media screen and (min-width: 1024px) {
+               font-size: 1.9rem;
+          }
+     }
+
+     .price,
+     .amount-price {
+          font-size: 20px;
+          color: $red;
+          opacity: 80%;
+          margin: 10px 0;
+
+          @media screen and (min-width: 1024px) {
+               font-size: 1.5rem;
+          }
+     }
+
+     .rating {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+     }
+
+     .description {
+          margin-top: 20px;
+          line-height: 1.6;
+          text-align: justify;
+          font-size: 1rem;
+
+          @media screen and (min-width: 1024px) {
+               font-size: 1.2rem;
+          }
+     }
 }
 
-.product-detail .image-product {
-     flex: 1;
-     width: 100%;
-     height: fit-content;
-     background-color: grey;
-}
-
-.product-detail .image-product img {
-     width: 100%;
-     object-fit: fill;
-     border: 1px solid #ddd;
-     border-radius: 5px;
-}
-
-.product-detail .detail-product {
-     flex: 2;
-}
-
-.product-detail .product-title,
-.transaction-product h1 {
-     font-size: 24px;
-     font-weight: bold;
-}
-
-.product-detail .price, .amount-price {
-     font-size: 20px;
-     color: #e63946;
-     margin: 10px 0;
-}
-
-.product-detail .rating {
-     display: flex;
-     align-items: center;
-     gap: 5px;
-}
-
-.product-detail .description {
-     margin-top: 20px;
-     line-height: 1.6;
-     text-align: justify;
-}
-
+/* Reviews */
 .reviews {
      max-width: 1200px;
      margin: 20px auto;
      padding: 20px;
      border-top: 1px solid #ddd;
+
+     .review-title {
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 10px;
+     }
+
+     .review-item {
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+
+          img {
+               width: 50px;
+               height: 50px;
+               object-fit: cover;
+               border-radius: 5px;
+          }
+
+          .review-text {
+               font-size: 14px;
+          }
+     }
 }
 
-.review-title {
-     font-size: 20px;
-     font-weight: bold;
-     margin-bottom: 10px;
-}
-
-.review-item {
-     display: flex;
-     gap: 10px;
-     margin-top: 10px;
-}
-
-.review-item img {
-     width: 50px;
-     height: 50px;
-     object-fit: cover;
-     border-radius: 5px;
-}
-
-.review-text {
-     font-size: 14px;
-}
-
+/* Transaction Product */
 .transaction-product {
      flex: 1;
      height: fit-content;
@@ -88,54 +118,74 @@
      display: flex;
      flex-flow: column nowrap;
      gap: 1rem;
-}
 
-.transaction-product .quantity {
-     border: 1px solid #ddd;
-     width: fit-content;
-     padding: 5px;
-     border-radius: 10px;
-}
+     .quantity {
+          border: 1px solid #ddd;
+          width: fit-content;
+          padding: 5px;
+          border-radius: 10px;
 
-.transaction-product .quantity input {
-     width: 50px;
-     text-align: center;
-     border: none;
-     background-color: white;
-     pointer-events: none;
-}
+          input {
+               width: 50px;
+               text-align: center;
+               border: none;
+               background-color: white;
+               pointer-events: none;
+          }
 
-.transaction-product .quantity button {
-     border: none;
-     background-color: white;
-     cursor: pointer;
-     font-size: 20px;
-}
+          button {
+               border: none;
+               background-color: white;
+               cursor: pointer;
+               font-size: 20px;
 
-.transaction-product .buttons {
-     display: flex;
-     flex-flow: row wrap;
-     gap: 0.5rem;
-}
+               @media screen and (min-width: 1024px) {
+                    font-size: 1.2rem;
+               }
+          }
+     }
 
-.transaction-product .buttons .buy-now,
-.buttons .add-cart {
-     padding: 10px;
-     border-radius: 10px;
-     border: none;
-     background-color: red;
-     color: white;
-     cursor: pointer;
-}
+     .buttons {
+          display: flex;
+          flex-flow: row wrap;
+          gap: 1rem;
 
-.transaction-product .buttons .add-wishlist {
-     border: none;
-     background-color: transparent;
-     font-size: 20px;
-     cursor: pointer;
-     margin-left: 10px;
-}
+          .buy-now,
+          .add-cart {
+               padding: 10px;
+               border-radius: 10px;
+               border: none;
+               background-color: $red;
+               color: $white;
+               font-size: 0.7rem;
+               cursor: pointer;
 
-.transaction-product .buttons .add-wishlist .like{
-     color: red;
+               @media screen and (min-width: 1024px) {
+                    font-size: 1.1rem;
+               }
+          }
+
+          .add-wishlist {
+               border: none;
+               background-color: transparent;
+               font-size: 1.1rem;
+               margin-left: 10px;
+               position: relative;
+               left: 75%;
+               cursor: pointer;
+
+               @media screen and (min-width: 338px) {
+                    position: inline;
+                    left: 0;
+               }
+
+               @media screen and (min-width: 1024px) {
+                    font-size: 1.8rem;
+               }
+
+               .like {
+                    color: $red;
+               }
+          }
+     }
 }

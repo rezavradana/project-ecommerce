@@ -16,7 +16,7 @@ const Product = {
                     <img src="" alt="">
                 </div>
                 <div class="detail-product">
-                    <h1 class="product-title">Product Title</h1>
+                    <h2 class="product-title">Product Title</h2>
                     <p class="price">Rp999999</p>
                     <div class="rating">
                         ⭐⭐⭐⭐⭐ <span>(628 rating)</span>
@@ -24,7 +24,7 @@ const Product = {
                     <p class="description"></p>
                 </div>
                 <div class="transaction-product">
-                    <h1>Atur jumlah dan catatan</h1>
+                    <h2>Atur jumlah dan catatan</h2>
                     <div class="stock">
                         Stok Total: <strong>13</strong>
                     </div>
