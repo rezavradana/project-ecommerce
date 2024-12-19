@@ -247,18 +247,48 @@
      margin: 30px auto;
      gap: 2rem;
      padding: 20px;
-     min-height: 300px;
+     min-height: 1000px;
+
+     font-family: $montserrat;
 }
 
 .cart-item {
      display: flex;
-     /* align-items: center; */
+     align-items: flex-start;
      flex-flow: row wrap;
-     row-gap: 10px;
+     row-gap: 15px;
      border-radius: 8px;
      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-     padding: 10px;
+     padding: 10px 0px;
      width: 100%;
+
+     @media screen and (min-width: 375px) {
+          flex-flow: row;
+     }
+
+     @media screen and (min-width: 768px) {
+          padding: 20px;
+
+          .cart-title {
+               font-size: 1rem;
+               font-weight: bold;
+          }
+          height: 200px;
+
+          .cart-title {
+               font-size: 1.5rem;
+               font-weight: bold;
+          }
+
+          .cart-image img {
+               width: 200px;
+               height: 150px;
+          }
+     }
+
+     @media screen and (min-width: 1024px) {
+          padding: 30px;
+     }
 }
 
 .cart-image {
@@ -318,6 +348,8 @@
      display: flex;
      align-items: center;
      gap: 10px;
+
+     cursor: pointer;
 }
 
 .cart-action-btn {
@@ -352,7 +384,7 @@
 }
 
 .cart-quantity-btn:hover {
-     background-color: #f5f5f5;
+     background-color: $white;
 }
 
 .cart-quantity-input {
@@ -372,33 +404,64 @@
      padding: 20px;
      border-radius: 10px;
      min-width: 250px;
+
+     font-family: $montserrat;
+
+     .title-transactions {
+          display: flex;
+          flex-flow: column nowrap;
+          gap: 0.5rem;
+     }
+     
+     .title-transactions .price {
+          display: flex;
+          justify-content: space-between;
+     }
+     
+     .title-transactions .title {
+          font-weight: bold;
+          font-size: 18px;
+     }
+     
+     .title-transactions .total-price {
+          font-weight: bold;
+     }
+     
+     .button-transactions button {
+          background-color: $red;
+          width: 100%;
+          border: none;
+          padding: 5px;
+          border-radius: 10px;
+          color: $white;
+     
+          cursor: pointer;
+     }
+
+     .button-transactions button:hover {
+          background-color: $red;
+          opacity: 80%;
+     }
+
+     @media screen and (min-width: 768px) {
+          width: 50%;
+          height: 200px;
+          gap: 1.4rem;
+          justify-content: center;
+
+          .title-transactions .title {
+               font-size: 1.4rem;
+          }
+
+          .title-transactions .price {
+               font-size: 1.2rem;
+          }
+
+          .button-transactions button {
+               font-size: 1rem;
+               font-weight: bold;
+               padding: 0.5rem;
+          }
+     }
 }
 
-.cart-transactions .title-transactions {
-     display: flex;
-     flex-flow: column nowrap;
-     gap: 0.5rem;
-}
-
-.cart-transactions .title-transactions .price {
-     display: flex;
-     justify-content: space-between;
-}
-
-.cart-transactions .title-transactions .title {
-     font-weight: bold;
-     font-size: 18px;
-}
-
-.cart-transactions .title-transactions .total-price {
-     font-weight: bold;
-}
-
-.cart-transactions .button-transactions button {
-     background-color: red;
-     width: 100%;
-     border: none;
-     padding: 5px;
-     border-radius: 10px;
-     color: white;
-}

@@ -9,9 +9,17 @@
           font-family: $montserrat;
 
           @media screen and (min-width: 1024px) {
-               max-width: 1200px;
-               margin: 50px auto;
+               flex-flow: row nowrap;
+               margin: 4rem auto;
                padding: 20px;
+               gap: 3rem;
+
+          }
+
+          @media screen and (min-width: 1200px) {
+               max-width: 80%;
+               // margin-top: 10rem;
+               // margin-bottom: 20rem;
           }
      }
 
@@ -43,6 +51,10 @@
           }
 
           @media screen and (min-width: 1024px) {
+               font-size: 1.8rem;
+          }
+
+          @media screen and (min-width: 1200px) {
                font-size: 1.9rem;
           }
      }
@@ -55,14 +67,12 @@
           margin: 10px 0;
 
           @media screen and (min-width: 1024px) {
+               font-size: 1.3rem;
+          }
+
+          @media screen and (min-width: 1200px) {
                font-size: 1.5rem;
           }
-     }
-
-     .rating {
-          display: flex;
-          align-items: center;
-          gap: 5px;
      }
 
      .description {
@@ -72,41 +82,15 @@
           font-size: 1rem;
 
           @media screen and (min-width: 1024px) {
+               font-size: 1.1rem;
+          }
+
+          @media screen and (min-width: 1200px) {
                font-size: 1.2rem;
           }
      }
 }
 
-/* Reviews */
-.reviews {
-     max-width: 1200px;
-     margin: 20px auto;
-     padding: 20px;
-     border-top: 1px solid #ddd;
-
-     .review-title {
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 10px;
-     }
-
-     .review-item {
-          display: flex;
-          gap: 10px;
-          margin-top: 10px;
-
-          img {
-               width: 50px;
-               height: 50px;
-               object-fit: cover;
-               border-radius: 5px;
-          }
-
-          .review-text {
-               font-size: 14px;
-          }
-     }
-}
 
 /* Transaction Product */
 .transaction-product {
@@ -118,6 +102,10 @@
      display: flex;
      flex-flow: column nowrap;
      gap: 1rem;
+
+     @media screen and (min-width: 1400px) {
+          flex: 1.5;
+     }
 
      .quantity {
           border: 1px solid #ddd;
@@ -160,8 +148,8 @@
                font-size: 0.7rem;
                cursor: pointer;
 
-               @media screen and (min-width: 1024px) {
-                    font-size: 1.1rem;
+               @media screen and (min-width: 1400px) {
+                    font-size: 1rem;
                }
           }
 
@@ -181,11 +169,37 @@
 
                @media screen and (min-width: 1024px) {
                     font-size: 1.8rem;
+                    position: relative;
+                    left: 35%;
+               }
+
+               @media screen and (min-width: 1390px) {
+                    position: inline;
+                    left: 0;
                }
 
                .like {
                     color: $red;
                }
+          }
+
+          @media screen and (min-width: 768px) {
+               .buy-now,
+               .add-cart {
+                    font-size: 1.2rem;
+               }
+
+               .add-wishlist {
+                    font-size: 2rem;
+               }
+          }
+
+          @media screen and (min-width: 1024px) {
+               flex-flow: column;
+          }
+
+          @media screen and (min-width: 1400px) {
+               flex-flow: row;
           }
      }
 }

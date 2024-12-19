@@ -18,9 +18,6 @@ const Product = {
                 <div class="detail-product">
                     <h2 class="product-title">Product Title</h2>
                     <p class="price">Rp999999</p>
-                    <div class="rating">
-                        ⭐⭐⭐⭐⭐ <span>(628 rating)</span>
-                    </div>
                     <p class="description"></p>
                 </div>
                 <div class="transaction-product">
@@ -40,16 +37,6 @@ const Product = {
                         <button class="add-wishlist"><i class="fa fa-heart-o"></i></button>                        
                     </div>
                 </div>
-            </div>
-        </div>
-    
-        <div class="reviews">
-            <h2 class="review-title">Ulasan Pembeli</h2>
-            <div class="review-item">
-                <p class="review-text">Fast response, pengiriman cepat, selalu dapat diskon & bonus! - oleh L***s</p>
-            </div>
-            <div class="review-item">
-                <p class="review-text">Produk bagus, recommended! - oleh A***y</p>
             </div>
         </div>
         `

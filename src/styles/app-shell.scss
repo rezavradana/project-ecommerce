@@ -59,8 +59,9 @@
                     transition: background-color 0.3s, color 0.3s;
 
                     &:hover {
-                         background-color: $cream;
-                         color: $black;
+                         background-color: $black;
+                         opacity: 80%;
+                         color: $white;
                     }
                }
           }
@@ -87,15 +88,21 @@
 
      .wish-cart-navbar {
           display: flex;
-          gap: 10px;
+          gap: 20px;
 
           a {
                color: $black;
                font-size: 18px;
 
                &:hover {
-                    color: $cream;
+                    color: $black;
+                    opacity: 80%;
                }
+          }
+
+          @media screen and (min-width: 1024px) {
+               gap: 50px;
+               margin-right: 2rem;
           }
      }
 
@@ -125,7 +132,7 @@
                color: $black;
 
                &:hover {
-                    color: $cream;
+                    color: $black
                }
           }
 
