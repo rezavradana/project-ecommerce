@@ -40,7 +40,7 @@ const Home = {
                     </li>
                     <li>
                         <img src="./icons/kerudung.png" alt="Kerudung">
-                        <a href="#/category/kerudung">kerudung</a>
+                        <a href="#/category/kerudung">Kerudung</a>
                     </li>
                 </ul>
             </div>
