@@ -16,11 +16,33 @@
      }
 
      .list-products {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
           grid-column-gap: 20px;
           grid-row-gap: 20px;
-          /* justify-content: center; */
+          display: grid;
+		// * Small Mobile
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.2rem;
+
+		// * Mobile and Tablet
+		@media screen and (min-width: 375px) {
+			grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+			
+			// * Laptop
+			@media screen and (min-width: 1024px) {
+				grid-template-columns: repeat(4, minmax(300px, 1fr));
+				gap: 2.5rem;
+
+				// * Wide
+				@media screen and (min-width: 1200px) {
+					grid-template-columns: repeat(4, minmax(350px, 1fr));
+
+					// * Ultra Wide
+					@media screen and (min-width: 1600px) {
+						grid-template-columns: repeat(4, minmax(350px, 1fr));
+					}
+				}
+			}
+		}
      }
      
      .list-products .product {

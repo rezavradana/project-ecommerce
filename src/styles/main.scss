@@ -15,17 +15,22 @@ $charm: "Charm", cursive;
 $white: #ffffff;
 $black: #171717;
 $red: #db0000;
+$cream: #f1afaf;
 
 body {
     margin: 0;
+    margin-top: 5rem;
     font-family: Arial, sans-serif;
     background-color: $white;
     font-family: "Poppins", sans-serif;
 }
 
 header {
-    display: inline;
+    display: flex;
+    flex-flow: column nowrap;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
@@ -72,12 +77,20 @@ footer .first-footer {
 
 // * Content Container
 @mixin content-container {
-    margin: 50px auto;
-    padding: 20px;
+    margin: 20px 50px;
+    padding: 10px;
     display: flex;
     flex-flow: column nowrap;
-    gap: 1.5rem;
-    max-width: 1000px;
+    gap: 1rem;
+    max-width: 95%;
+
+    @media screen and (min-width: 1024px) {
+        margin: 50px auto;
+        padding: 20px;
+        display: flex;
+        gap: 1.5rem;
+        max-width: 90%;
+    }
 }
 
 @mixin title-container {
@@ -95,7 +108,7 @@ footer .first-footer {
 }
 
 // * Import Partial Part SCSS
-@import "navbar";
+@import "app-shell";
 @import "account";
 @import "swiper";
 @import "category";

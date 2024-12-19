@@ -15,48 +15,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!-- icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://kit.fontawesome.com/c9838309fd.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-jJjbRMJC-TQBlQ-G"></script>
 </head>
 <body>
     <header id="headercontent">
         <nav class="navbar">
-            <div class="title-navbar"> 
-                <a href="">
-                    <h1>Zaviera</h1>
-                </a>
+            <div class="navbar-header">
+                <span class="navbar-title">Zaviera</span>
             </div>
-
-            <div class="menu-navbar">
-                <ul class="ul-list">
-                    <li>
-                        <a href="#/home">Home</a>
-                    </li>
-                    <li>
-                        <a href="#/contact">Contact</a>
-                    </li>
-                    <li>
-                        <a href="#/about">About</a>
-                    </li>
-                    <li>
-                        <a href="#/login" class="login-logout">Sign Up</a>
-                    </li>
+    
+            <button id="drawer" class="nav-drawer" aria-label="Toggle Navigation" aria-expanded="false">☰</button>
+            <div class="menu-navbar" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/contact">Contact</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="#/login" class="login-logout">Sign Up</a></li>
+                    <li><a href="#/login" class="login-logout">FAQ</a></li>
                 </ul>
-            </div>
-
-            <div class="search-navbar">
-                <form action="">
-                    <input type="text" placeholder="What are you looking for?">
-                </form>
-                <div class="search-button">
-                    <i class="fa fa-search"></i>
+                <div class="search-wishlist-cart">
+                    <div class="search-navbar">
+                        <form>
+                            <input type="text" placeholder="What are you looking for?" aria-label="Search">
+                        </form>
+                        <button class="search-button" aria-label="Search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-
             <div class="wish-cart-navbar">
-                <a href="/#/wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                <a href="/#/cart" class="cart"><i class="fa fa-shopping-cart"></i></a>
+                <a href="/#/wishlist" class="wishlist" aria-label="Wishlist"><i class="fa fa-heart"></i></a>
+                <a href="/#/cart" class="cart" aria-label="Cart"><i class="fa fa-shopping-cart"></i></a>
             </div>
         </nav>
     </header>
@@ -65,37 +59,26 @@
     </main>
 
     <footer>
-        <div class="first-footer">
-            <div class="exclusive">
-                <h2>Exclusive</h2>
-                <h3>Subscribe</h3>
-                <span>get 10% off our first order</span>
-            </div>
-
-            <div class="support">
-                <h2>Support</h2>
-                <span>Jakarta, Indonesia</span>
-                <span>alief1101@gmail.com</span>
-                <span>+88015-88888-99999</span>
-            </div>
-
-            <div class="account">
-                <a href="">My Account</a>
-                <a href="">Login / Register</a>
-                <a href="">Cart</a>
-                <a href="">Wishlist</a>
-                <a href="">Shop</a>
-            </div>
-
-            <div class="quick-link">
-                <a href="">Privacy Policy</a>
-                <a href="">Terms Of Use</a>
-                <a href="">FAQ</a>
-                <a href="">Contact</a>
-            </div>
+        <div class="upper-footer">
+            <h2 class="footer-title">Zaviera</h2>
+            <div class="identity-footer">
+                <ul class="support">
+                    <li class="footer-header">Support</li>
+                    <li><i class="fa-brands fa-whatsapp"></i> <i> +62 851 6191 1016</i></li>
+                    <li><i class="fa-regular fa-envelope"></i> <i> zavierashop@gmail.com</i></li>
+                </ul>
+                
+                <ul class="developer">
+                    <li class="footer-header">Developer K5</li>
+                    <li>Ilham Alifio Daruwijaya</li>
+                    <li>Mohammad Farhan Maulana</li>
+                    <li>Rizky Alief Yudistira</li>
+                    <li>Reza Pradana</li>
+                    <li>Viona Adelia Ayuni</li>
+                </ul>
+            </div>    
         </div>
-
-        <div class="second-footer">
+        <div class="bottom-footer">
             <span>&copy; Copyright Zaviera 2024. All right reserved</span>
         </div>
     </footer>
