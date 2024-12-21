@@ -29,13 +29,13 @@ const DrawerInitiator = {
               handleLogout();
             });
         } else {
-            loginlogout.textContent = 'Sign Up';
+            loginlogout.textContent = 'Daftar';
             loginlogout.href = '#/login';
         }
       }
 
       function handleLogout() {
-        loginlogout.textContent = 'Sign Up';
+        loginlogout.textContent = 'Daftar';
         localStorage.removeItem('accessToken');
         alert('You have been logged out successfully.');
         window.location.href = '#/login';

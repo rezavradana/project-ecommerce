@@ -7,7 +7,7 @@ const Login = {
         mainContent.innerHTML = `
         <div class="login">
         <div class="container">
-            <h2>Log in to E-Commerce</h2>
+            <h2>Masuk ke E-Commerce</h2>
             <form id="form">
                 <div class="email form-input">
                     <input id="input-email" type="email" placeholder="Enter your Email" required>
@@ -18,8 +18,8 @@ const Login = {
                 </div>
 
                 <div class="button-login">
-                    <button type="submit">Log In</button>
-                    <span>Don't have an account? <a href="/#/register">Sign up now</a></span>
+                    <button type="submit">Masuk</button>
+                    <span>Belum memiliki akun? <a href="/#/register">Daftar sekarang!!</a></span>
                 </div>
             </form>
         </div>
@@ -47,8 +47,8 @@ const Login = {
                 window.location.href = '#/home';
                 const links = document.querySelectorAll('a');
                 links.forEach(link => {
-                    if (link.textContent.trim() === "Sign Up") {
-                        link.textContent = "Logout";
+                    if (link.textContent.trim() === "Daftar") {
+                        link.textContent = "Keluar";
                         link.href = "#";
                     }
                 });

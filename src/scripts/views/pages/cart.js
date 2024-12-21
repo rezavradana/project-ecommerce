@@ -64,12 +64,12 @@ const Cart = {
             document.querySelector('.cart-transactions .total-price').innerText = `Rp${totalPrice.toLocaleString()}`;
             return totalPrice;
         }
+        // <span class="cart-discount">23%</span>
 
         for (const item of cartData) {         
             const cartItemHTML = `
             <div class="cart-item" data-product-id="${item.product_id}">
                 <div class="cart-image">
-                <span class="cart-discount">23%</span>
                 <img src="./images/${item.image_url}">
                 </div>
                 <div class="cart-details">

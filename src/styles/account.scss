@@ -4,19 +4,71 @@
      width: 100%;
      max-width: 600px;
      margin: 50px auto;
+
+     font-family: $montserrat;
 }
 
 .login .container,
 .register .container {
      display: flex;
      flex-flow: column nowrap;
-     gap: 1rem;
-     padding: 30px;
-     margin: 130px 80px;
+     min-height: 300px;
+     gap: 2rem;
+     padding: 40px 20px;
+     margin: 130px 10px;
      background-color: #FFFFFF;
      align-items: center;
+     justify-content: center;
      border-radius: 15px;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+     h2 {
+          font-size: 1.3rem;
+     }
+
+     @media screen and (min-width: 425px) {
+          min-height: 400px;
+          padding: 50px 30px;
+          margin: 130px 50px;
+
+          h2 {
+               font-size: 1.6rem;
+          }
+     }
+
+     @media screen and (min-width: 625px) {
+          padding: 50px;
+          margin: 130px 60px;
+     }
+
+     @media screen and (min-width: 768px) {
+          min-height: 400px;
+          padding: 50px;
+          margin: 130px 80px;
+     }
+}
+
+.login .container {
+     @media screen and (min-width: 425px) {
+          min-height: 400px;
+          padding: 50px 30px;
+          margin: 130px 50px;
+
+          h2 {
+               font-size: 1.3rem;
+          }
+     }
+
+     @media screen and (min-width: 625px) {
+          padding: 50px;
+          margin: 130px 60px;
+     }
+
+     @media screen and (min-width: 768px) {
+          min-height: 400px;
+          padding: 50px;
+          margin: 130px 80px;
+     }
 }
 
 .login .container form,
@@ -56,7 +108,22 @@
      background-color: red;
      color: #FFFFFF;
      font-family: 'Poppins', sans-serif;
-     font-weight: 500;
+     font-size: 0.9rem;
+     font-weight: bold;
+     margin-bottom: 20px;
+
      cursor: pointer;
-     margin-bottom: 10px;
+
+     @media screen and (min-width: 768px) {
+          margin-bottom: 10px;
+     }
+}
+
+.button-login span,
+.button-register span {
+     font-size: 0.8rem;
+
+     @media screen and (min-width: 768px) {
+          font-size: 0.9rem;
+     }
 }

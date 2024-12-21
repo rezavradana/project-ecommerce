@@ -7,7 +7,7 @@ const Register = {
         mainContent.innerHTML = `
         <div class="register">
         <div class="container">        
-            <h2>Create an account</h2>
+            <h2>Buat Akun</h2>
             <form id="form">
                 <div class="username form-input">
                     <input type="text" placeholder="Enter your username" required id="input-username">
@@ -22,8 +22,8 @@ const Register = {
                 </div>
 
                 <div class="button-register">
-                    <button type="submit">Register</button>
-                    <span>Already have an account? <a href="/#/login">Log in now</a></span>
+                    <button type="submit">Daftar</button>
+                    <span>Sudah memiliki akun? <a href="/#/login">Masuk</a></span>
                 </div>
             </form>
         </div>

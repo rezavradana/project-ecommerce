@@ -3,11 +3,11 @@ import { addCart, deleteWishlist, getWishlistById, updateToken } from "../../dat
 const Wishlist = {
     async render() {
         const mainContent = document.querySelector('#maincontent');
+        // <div class="product-discount">-35%</div>
 
         mainContent.innerHTML = `
         <div class="wishlist-products"> 
             <div class="product-card">
-                <div class="product-discount">-35%</div>
                 <button class="product-trash">
                     <i class="fa fa-trash"></i>
                 </button>
