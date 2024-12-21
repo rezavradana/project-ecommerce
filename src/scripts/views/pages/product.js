@@ -117,7 +117,6 @@ const Product = {
             // ORDER ID
             const orderId = `order-${nanoid(16)}`;
             
-
             // AMOUNT PRICE & QUANTITY
             const amountPrice = parseInt(localStorage.getItem('amountPriceProduct'));
             const quantity = parseInt(localStorage.getItem('quantity'));
@@ -137,14 +136,13 @@ const Product = {
             ]
 
             const resultPayment = await processPayment({ orderId, amount: amountPrice, itemsArray, customer: user });
-            console.log(resultPayment);
             const { token } = resultPayment.data.resultPayment;
 
             // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
             window.snap.pay(token, {
-              onSuccess: function(result){
+              onSuccess: async function(result){
                 /* You may add your own implementation here */
-                alert("payment success!"); console.log(result);
+                alert("Pembayaran berhasil! Silahkan cek di email Anda"); console.log(result);
               },
               onPending: function(result){
                 /* You may add your own implementation here */
