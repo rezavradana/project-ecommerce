@@ -19,50 +19,49 @@
 }
 
 .floating-content {
-    background-color: white;
+    background-color: peachpuff;
     margin: 5% auto;
     padding: 2rem;
-    border-radius: 10px;
-    width: 50%;
+    border-radius: 15px;
+    width: 60%;
     max-height: 90%;
     overflow-y: auto;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
-/* Close Button Styling */
-.close-floating {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+/* Title Styling */
+.floating-title {
     font-size: 24px;
-    cursor: pointer;
-}
-
-/* Scrollable Content */
-.scrollable-content {
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-right: 1rem;
-}
-
-/* CTA Button Styling */
-.cta-button {
-    background-color: #f7b733;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-    display: block;
-    width: 100%;
+    font-weight: bold;
+    color: #ff6b6b;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-.cta-button:hover {
-    background-color: #f7a200;
+/* Intro Container Styling */
+.intro-container {
+    background-color: #ffe5d4;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Intro Text Styling */
+.intro-text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Slogan Styling */
+.slogan {
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
 }
 
 /* Team Section Styling */
@@ -74,19 +73,108 @@
     flex-wrap: wrap;
 }
 
+.team-title {
+    text-align: center;
+}
+
 .team-member img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    border: 2px solid #ffa69e;
+    object-fit: cover;
 }
 
 .team-member p {
     text-align: center;
     font-weight: bold;
+    margin-top: 0.5rem;
+    color: #333;
 }
 
-.story-section img{
-    width: 600px;
-    height: auto;
-    border-radius: 0%;
+/* CTA Button Styling */
+.cta-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #f05454;
+}
+
+/* Close Button Styling */
+.close-floating {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Responsiveness for Laptop, Tablet, and Mobile */
+@media screen and (max-width: 1024px) { /* Tablet and smaller laptops */
+    .floating-content {
+        width: 75%; /* Reduce the width for smaller screens */
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) { /* Tablets */
+    .floating-content {
+        width: 85%; /* Further reduce the width */
+        padding: 1.5rem;
+    }
+
+    .team-member img {
+        width: 80px; /* Adjust team member images for smaller screens */
+        height: 80px;
+    }
+
+    .team-member p {
+        font-size: 0.9rem; /* Reduce font size for names */
+    }
+}
+
+@media screen and (max-width: 480px) { /* Mobile phones */
+    .floating-content {
+        width: 95%; /* Maximize width for mobile devices */
+        margin: 10% auto;
+        padding: 1rem; /* Reduce padding for smaller devices */
+    }
+
+    .floating-title {
+        font-size: 20px; /* Reduce title size for smaller screens */
+    }
+
+    .intro-text {
+        font-size: 14px; /* Smaller font size for intro text */
+    }
+
+    .cta-button {
+        font-size: 0.9rem; /* Adjust button text size */
+        padding: 8px 16px;
+    }
+
+    .team-member img {
+        width: 70px; /* Further adjust image size for small screens */
+        height: 70px;
+    }
+
+    .team-member p {
+        font-size: 0.8rem;
+    }
 }
