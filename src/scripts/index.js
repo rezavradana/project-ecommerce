@@ -78,28 +78,44 @@ toggleButtons.forEach((button) => {
 	});
 });
 
+// Toggle FAQ Answer Visibility
+document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const toggleButton = item.querySelector('.toggle-answer');
+
+    question.addEventListener('click', () => {
+        answer.classList.toggle('active');
+        toggleButton.textContent = answer.classList.contains('active') ? '▲' : '▼';
+    });
+});
+
+
 /// About
+// About Us Popup Functionality
 document.addEventListener("DOMContentLoaded", () => {
-	const floatingPage = document.getElementById("about-us-floating");
-	const aboutNavButton = document.getElementById("about-nav");
-	const closeButton = document.getElementById("close-floating");
-	const closeFloatingButton = document.getElementById(
-		"close-floating-button"
-	);
+    const floatingPage = document.getElementById("about-us-floating");
+    const aboutNavButton = document.getElementById("about-nav");
+    const closeButton = document.getElementById("close-floating");
+    const closeFloatingButton = document.getElementById("close-floating-button");
+    const mainContent = document.querySelector("main");
 
-	// Event listener untuk membuka floating page saat tombol About di navbar diklik
-	aboutNavButton.addEventListener("click", (e) => {
-		e.preventDefault(); // Mencegah link reload
-		floatingPage.classList.add("active");
-	});
+    // Open popup when About is clicked
+    aboutNavButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        floatingPage.classList.add("active");
+        mainContent.classList.add("blur");
+    });
 
-	// Event listener untuk menutup floating page saat tombol close (X) diklik
-	closeButton.addEventListener("click", () => {
-		floatingPage.classList.remove("active");
-	});
+    // Close popup when close button is clicked
+    closeButton.addEventListener("click", () => {
+        floatingPage.classList.remove("active");
+        mainContent.classList.remove("blur");
+    });
 
-	// Event listener untuk menutup floating page saat tombol "Belanja Sekarang" diklik
-	closeFloatingButton.addEventListener("click", () => {
-		floatingPage.classList.remove("active");
-	});
+    // Close popup when CTA button is clicked
+    closeFloatingButton.addEventListener("click", () => {
+        floatingPage.classList.remove("active");
+        mainContent.classList.remove("blur");
+    });
 });
