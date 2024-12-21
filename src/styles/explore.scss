@@ -91,11 +91,11 @@
           flex-flow: column nowrap;
           gap: 1rem;
           margin: 10px;
-     }
 
-     // @media screen and (min-width: ) {
-          
-     // }
+          .product-stock {
+               color: $red;
+          }
+     }
 }
 
 

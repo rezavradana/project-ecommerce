@@ -41,7 +41,7 @@ const Register = {
 
             const payload = { username, email, password };
             const responseJson = await addRegistration(payload);
-
+            console.log(responseJson);
             if (responseJson.status == 'success') {
                 window.location.href = '#/login';
                 alert('Registrasi telah berhasil. Silahkakan login');

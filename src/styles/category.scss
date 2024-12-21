@@ -80,9 +80,18 @@
                     }
 
                     a {
+                         display: flex;
+                         flex-flow: column nowrap;
                          text-decoration: none;
-                         color: black;
+                         color: $black;
+                         align-items: center;
+                         justify-items: center;
+                         gap: 1rem;
                          cursor: pointer;
+                    }
+
+                    h2 {
+                         color: $black;
                          font-family: $montserrat;
                          font-size: 1.2rem;
                          font-weight: bold;
@@ -91,6 +100,8 @@
                               font-size: 1.7rem;
                          }
                     }
+
+
                }
           }
      }

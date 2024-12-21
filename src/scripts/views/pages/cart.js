@@ -1,4 +1,4 @@
-import { getCart, getUserById, processPayment, updateQuantityItemInCart, updateToken } from "../../data/main";
+import { getCart, getUserById, processPayment, updateToken } from "../../data/main";
 import setupQuantityInput from "../../utils/input-quantity-cart";
 import { buttonDeleteCart } from "../../utils/cart-button";
 import { nanoid } from "nanoid";
@@ -37,6 +37,18 @@ const Cart = {
 
         const responseJson = await getCart(accessToken);
         const cartData = responseJson.data.carts;
+        if (cartData.length === 0) {
+            cartProductsElement.innerHTML = `
+                <div>Keranjang masih kosong</div>
+            `;
+
+            const payButton = document.querySelector('.cart-transactions-btn');
+            payButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('Keranjang masih kosong. Silahkan cari produk terlebih dahulu');
+            })
+            return;
+        }
 
         function updateTotalPrice() {
             const cartItems = document.querySelectorAll('.cart-item');

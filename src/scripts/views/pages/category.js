@@ -1,6 +1,5 @@
 import UrlParser from '../../route/url-parser';
 import { getProductFromCategory, getProducts } from '../../data/main';
-import { filterProductsByCategory } from '../../utils/category-filter';
 
 const Category = {
     async render() {
@@ -40,11 +39,10 @@ const Category = {
                         <img src="./images/${product.image_url}" alt="">
                     </div>
                     <div class="description-product">
-                        <span>${product.name}</span>
-                        <span>${product.price}</span>
-                        <div class="rating">
-                            <i class="fa fa-star"> 5.0 | </i>
-                            <span>${product.stock}</span>
+                        <h3>${product.name}</h3>
+                        <span>Rp.${product.price}</span>
+                        <div class="product-stock">
+                            <span>Sisa ${product.stock}</span>
                         </div>
                     </div>
                 </a>
@@ -52,8 +50,9 @@ const Category = {
             `
         }
 
+        const categoryId = localStorage.getItem('categoryId');
         if (titleCategory === 'Baju') {
-            const resultProductByCategory = await getProductFromCategory('categories-h1fb8xYOwvlZWc_g');
+            const resultProductByCategory = await getProductFromCategory(categoryId);
             const { products } = resultProductByCategory.data;
 
             for (const product of products) {
@@ -62,7 +61,7 @@ const Category = {
         } 
 
         if (titleCategory === 'Kerudung') {
-            const resultProductByCategory = await getProductFromCategory('categories-kzsxI8bbn-l15gsM');
+            const resultProductByCategory = await getProductFromCategory(categoryId);
             const { products } = resultProductByCategory.data;
 
             for (const product of products) {

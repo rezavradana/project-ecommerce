@@ -21,7 +21,7 @@ async function checkAuth(event) {
         return false;
     }
 
-    return true;
+    return isTokenValid;
 }
 
 async function validateToken(refreshToken) {

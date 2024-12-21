@@ -219,6 +219,7 @@ footer {
                     gap: 0.7rem;
                     font-size: 0.9rem;
                     margin-bottom: 10px;
+                    align-items: center;
                }
      
                .footer-header {
@@ -230,6 +231,10 @@ footer {
                     flex-flow: row nowrap;
                     justify-content: space-between;
                     gap: 2rem;
+
+                    #footer-icon {
+                         font-size: 1.5rem;
+                    }
                }
 
                @media screen and (min-width: 1024px) {

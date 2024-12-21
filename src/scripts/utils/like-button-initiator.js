@@ -1,4 +1,5 @@
 import { addWishlist, checkWishlistById, deleteWishlist, updateToken } from "../data/main";
+import { checkAuth } from "./check-auth";
 
 const LikeButtonInitiator = {
   async init({ wishlistButton, productId, refreshToken }) {
@@ -37,31 +38,36 @@ const LikeButtonInitiator = {
     `;
 
     this._wishlistButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const refreshToken = this._refreshToken;
-        const responseJson = await updateToken({ refreshToken });
-        const { accessToken } = responseJson.data;
-
+      event.preventDefault();
+      const checkAuthResponse = await checkAuth(event);
+      if (checkAuthResponse.status == 'success') {     
+        const { accessToken } = checkAuthResponse.data;
+        localStorage.setItem('accessToken', accessToken);
+        
         const productId = this._productId;
         await addWishlist({ productId }, accessToken);
         await this._renderButton();
+      }
+      
     })
   },
-
+  
   _renderLiked() {
     this._wishlistButton.innerHTML = `
-        <i class="fa fa-heart like">
+    <i class="fa fa-heart like">
     `;
-
+    
     this._wishlistButton.addEventListener('click', async (event) => {
         event.preventDefault();
-        const refreshToken = this._refreshToken;
-        const responseJson = await updateToken({ refreshToken });
-        const { accessToken } = responseJson.data;
+        const checkAuthResponse = await checkAuth(event);
+        if (checkAuthResponse.status == 'success') {     
+          const { accessToken } = checkAuthResponse.data;
+          localStorage.setItem('accessToken', accessToken);
 
-        const productId = this._productId;
-        await deleteWishlist({ productId }, accessToken);
-        await this._renderButton();
+          const productId = this._productId;
+          await deleteWishlist({ productId }, accessToken);
+          await this._renderButton();
+        }
     })
   },
 };

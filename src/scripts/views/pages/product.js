@@ -4,6 +4,7 @@ import UrlParser from "../../route/url-parser";
 import { buttonAddCart } from "../../utils/cart-button";
 import setupQuantityInput from "../../utils/input-quantity-product";
 import LikeButtonInitiator from "../../utils/like-button-initiator";
+import { checkAuth } from "../../utils/check-auth";
 
 const Product = {
     async render() {
@@ -74,13 +75,22 @@ const Product = {
 
         // CART PRODUK
         let cartButton = document.querySelector('.add-cart');
-        cartButton.addEventListener('click', async () => {
-            const quantity = parseInt(localStorage.getItem('quantity'));
-            const responseJson = await buttonAddCart(productId, quantity);
-            if (responseJson.status === 'success') {
-                alert('Produck berhasil ditambahkan');
+        cartButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const checkAuthResponse = await checkAuth(event);
+            if (checkAuthResponse.status == 'success') {     
+                const { accessToken } = checkAuthResponse.data;
+                localStorage.setItem('accessToken', accessToken);
+
+                const quantity = parseInt(localStorage.getItem('quantity'));
+                const responseJson = await buttonAddCart(productId, quantity);
+                if (responseJson.status === 'success') {
+                    alert('Produck berhasil ditambahkan');
+                } else {
+                    alert('Terdapat kesalahan');
+                }
             } else {
-                alert('Terdapat kesalahan');
+                return;
             }
         });
 
@@ -94,14 +104,19 @@ const Product = {
         // BELI PRODUK
         const payButton = document.querySelector('.buy-now');
         payButton.addEventListener('click', async function (event) {
+            event.preventDefault();
+
+            const responseJson = await checkAuth(event);
+            const { accessToken } = responseJson.data;
+            if (responseJson.status == 'success') {     
+                localStorage.setItem('accessToken', accessToken);
+            } else {
+                return;
+            }
+
             // ORDER ID
             const orderId = `order-${nanoid(16)}`;
             
-            event.preventDefault();
-            // ACCESS TOKEN
-            const refreshToken = localStorage.getItem('refreshToken');
-            const responseRefreshToken = await updateToken({ refreshToken });
-            const { accessToken } = responseRefreshToken.data;
 
             // AMOUNT PRICE & QUANTITY
             const amountPrice = parseInt(localStorage.getItem('amountPriceProduct'));

@@ -1,0 +1,97 @@
+.category {
+    @include content-container;
+
+    .title-products {
+         span {
+              font-size: 0.9rem;
+         }
+         h3 {
+              font-size: 1.6rem;
+         }
+
+         @media screen and (min-width: 768px) {
+              span {
+                   font-size: 1.4rem;
+              }
+              h3 {
+                   font-size: 2rem;
+              }
+         }
+    }
+
+    .header i,
+    .title-products .header i {
+         @include header-container;
+    }
+
+    .header span,
+    .title-products .header span {
+         color: red;
+    }
+
+    .list-products {
+         grid-column-gap: 20px;
+         grid-row-gap: 20px;
+         display: grid;
+       // * Small Mobile
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       gap: 1.2rem;
+
+       // * Mobile and Tablet
+       @media screen and (min-width: 425px) {
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           // * Laptop
+           @media screen and (min-width: 1024px) {
+               grid-template-columns: repeat(3, minmax(150px, 1fr));
+               gap: 2.5rem;
+
+               // * Wide
+               @media screen and (min-width: 1200px) {
+                   grid-template-columns: repeat(4, minmax(150px, 1fr));
+
+                   // * Ultra Wide
+                   @media screen and (min-width: 1600px) {
+                       grid-template-columns: repeat(4, minmax(300px, 1fr));
+                   }
+               }
+           }
+       }
+    }
+    
+    .list-products .product {
+         display: flex;
+         flex-flow: column nowrap;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+         width: 100%;
+         border-radius: 5px;
+         overflow: hidden;
+    }
+    
+    .list-products .product a {
+         text-decoration: none;
+         color: black;
+    }
+    
+    .list-products .product .image-product {
+         width: 100%;
+         height: 200px;
+         background-color: grey;
+    }
+
+    .list-products .product .image-product img {
+         width: 100%;
+         height: 100%;
+         object-fit: fill;
+    }
+    
+    .list-products .product .description-product {
+         display: flex;
+         flex-flow: column nowrap;
+         gap: 1rem;
+         margin: 10px;
+
+        .product-stock {
+            color: $red;
+        }
+    }
+}

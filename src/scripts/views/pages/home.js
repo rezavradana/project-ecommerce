@@ -1,6 +1,6 @@
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-import { getProducts } from '../../data/main';
+import { getAllCategory, getProducts } from '../../data/main';
 
 const Home = {
     async render() {
@@ -33,16 +33,7 @@ const Home = {
             </div>
 
             <div class="list-category">
-                <ul>
-                    <li>
-                        <img src="./icons/baju.png" alt="Baju">
-                        <a href="#/category/baju">Baju</a>
-                    </li>
-                    <li>
-                        <img src="./icons/kerudung.png" alt="Kerudung">
-                        <a href="#/category/kerudung">Kerudung</a>
-                    </li>
-                </ul>
+                <ul></ul>
             </div>
         </div>
 
@@ -57,8 +48,7 @@ const Home = {
                 </div>
             </div>
 
-            <div class="list-products">
-            </div>
+            <div class="list-products"></div>
         </div>
         `
     },
@@ -90,6 +80,27 @@ const Home = {
             },
         });
 
+        const responseCategory = await getAllCategory();
+        const { categories } = responseCategory.data;
+        const wrapperListCategory = document.querySelector('.list-category ul');
+        let htmlContent = '';
+
+        categories.forEach((category) => {
+            const nameCategoryLowerCase = category.name.toLowerCase();
+            const elementListCategory = `
+                    <li>
+                        <a href="#/category/${nameCategoryLowerCase}" class="categories" id="${category.id}">
+                            <img src="./icons/${nameCategoryLowerCase}.png" alt="${category.name}">
+                            <h4>${category.name}</h4>
+                        </a>    
+                    </li>
+            `;
+            htmlContent += elementListCategory;
+        });
+
+        wrapperListCategory.insertAdjacentHTML('beforeend', htmlContent);
+
+
         const responseJson = await getProducts();
 
         if (responseJson.status === 'success' && responseJson.data && responseJson.data.products) {
@@ -113,9 +124,9 @@ const Home = {
                             <img src="./images/${product.image_url}" alt="${product.name}">
                         </div>
                         <div class="description-product">
-                            <span>${product.name}</span>
+                            <h3>${product.name}</h3>
                             <span>Rp.${product.price}</span>
-                            <div class="rating">
+                            <div class="product-stock">
                                 <span>Tersisa: ${product.stock} Stok</span>
                             </div>
                         </div>
@@ -128,6 +139,14 @@ const Home = {
         } else {
             console.error('Gagal memuat produk');
         }
+
+        const categoriesLinks = document.querySelectorAll('a.categories');
+        categoriesLinks.forEach((category) => {
+            category.addEventListener('click', () => {
+                const categoryId = category.id;
+                localStorage.setItem('categoryId', categoryId);
+            })
+        })
 
     }
 }
